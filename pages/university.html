@@ -78,7 +78,7 @@
     }
     @media(max-width:720px){
       .courses-grid { grid-template-columns: 1fr; }
-      .courses-grid .course-img { grid-row: auto; max-width: 200px; }
+      .courses-grid .course-img { grid-row: auto; max-width: 200px; margin: 0 auto; }
       .courses-grid .course-label,
       .courses-grid .course-intro,
       .courses-grid .course-ug-head,
@@ -124,7 +124,8 @@
     }
 
     @media(max-width:720px){
-      .float-right-fig { float:none; width:200px; margin:0 0 20px 0; }
+      .float-right-fig { float:none; width:200px; margin:0 auto 20px auto; display:block; }
+      .rosette-dinkus { padding-top: 0; padding-bottom: 0; margin-top: -16px; }
       .rosette-dinkus, .jinn-close { padding-left:24px; padding-right:24px; }
     }
   </style>
@@ -139,6 +140,7 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
+        <li class="mobile-home-link"><a href="../index.html">Home</a></li>
         <li><a href="biography.html">Biography</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="publications.html">Publications</a></li>

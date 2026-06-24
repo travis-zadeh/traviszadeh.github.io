@@ -551,6 +551,9 @@ a:hover { border-bottom-color: var(--accent); }
 .footer-right { font-size: 0.78rem; color: var(--muted); text-align: right; }
 
 /* ── Responsive ──────────────────────────────────────────── */
+/* Home link in mobile nav — hidden on desktop */
+.mobile-home-link { display: none; }
+
 @media (max-width: 720px) {
   .nav-links { display: none; flex-direction: column; gap: 0; position: absolute;
     top: 56px; left: 0; right: 0; background: var(--bg);
@@ -558,6 +561,40 @@ a:hover { border-bottom-color: var(--accent); }
   .nav-links.open { display: flex; }
   .nav-links a { display: block; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 0.82rem; }
   .nav-toggle { display: flex; }
+  .mobile-home-link { display: block; }
+
+  /* Page title moves into nav bar on mobile */
+  body:not(.home-page) .nav-inner { justify-content: space-between; }
+  body:not(.home-page) .nav-name { display: none; }
+  /* Keep hamburger on the right when nav-name is hidden */
+  body:not(.home-page) .nav-inner { justify-content: flex-end; }
+  .page-header {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    max-width: calc(100% - 60px);
+  }
+  .page-header h1 {
+    font-size: 1rem;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .page-header .subtitle { display: none; }
+  /* Restore normal page-header spacing below the nav */
+  .page-header + * { padding-top: 48px; }
+  /* Add a rule below the nav instead */
+  body:not(.home-page) .site-nav { border-bottom: 1px solid var(--rule); }
 
   .col, .col-wide, .section, .page-header, .home-identity,
   .home-nav-links, .wide-img-block, .site-footer { padding-left: 24px; padding-right: 24px; }
@@ -566,9 +603,13 @@ a:hover { border-bottom-color: var(--accent); }
   .hero-caption { padding: 8px 24px; }
 
   .portal-block { grid-template-columns: 1fr; }
-  .portal-img-wrap { grid-column: 1; grid-row: auto; max-width: 260px; }
+  .portal-img-wrap { grid-column: 1; grid-row: auto; max-width: 260px; float: none; margin: 0 auto 24px auto; }
+  .ms-card { display: block; margin-left: auto; margin-right: auto; float: none !important; }
+  figure.ms-card { margin-left: auto; margin-right: auto; }
 
   .home-identity h1 { font-size: 1.8rem; }
+  body.home-page .nav-name { display: none; }
+  body.home-page .nav-inner { justify-content: flex-end; }
   .home-nav-links { gap: 24px; }
 
   .pub-table td.venue { display: none; }

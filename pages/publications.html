@@ -30,6 +30,8 @@
       overflow: hidden;
       outline: 1px solid var(--rule);
       outline-offset: -1px;
+      padding: 0;
+      line-height: 0;
     }
     .book-cover img {
       width: 120px;
@@ -108,9 +110,11 @@
     .jinn-close img { max-width: 160px; height: auto; display: block; }
 
     @media(max-width:600px){
-      .book-grid { grid-template-columns: 1fr; }
-      .book-cover { max-width: 110px; margin-bottom: 16px; }
+      .book-grid { grid-template-columns: 1fr; text-align: center; }
+      .book-cover { max-width: 110px; margin: 0 auto 16px auto; }
+      .book-info { text-align: left; }
       .ornament-divider, .jinn-close { padding-left: 24px; padding-right: 24px; }
+      .cloud-dinkus { padding-top: 16px !important; padding-bottom: 4px !important; }
     }
   </style>
 </head>
@@ -124,6 +128,7 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
+        <li class="mobile-home-link"><a href="../index.html">Home</a></li>
         <li><a href="biography.html">Biography</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="publications.html" class="active">Publications</a></li>
@@ -141,7 +146,7 @@
       <p class="section-label">Books</p>
 
       <div class="book-grid">
-        <figure class="book-cover" style="margin:0;padding:0;line-height:0;display:block;"><img src="../img/covers/cover-wonders.jpg" alt="Book cover: Wonders and Rarities, Harvard University Press, 2023" width="120" height="184" loading="eager" style="display:block;vertical-align:bottom;"></figure>
+        <figure class="book-cover"><img src="../img/covers/cover-wonders.jpg" alt="Book cover: Wonders and Rarities, Harvard University Press, 2023" width="120" height="184" loading="eager" style="display:block;vertical-align:bottom;"></figure>
         <div class="book-info">
           <h2>Wonders and Rarities</h2>
           <p class="book-sub">
@@ -157,7 +162,7 @@
       </div>
 
       <div class="book-grid">
-        <figure class="book-cover" style="margin:0;padding:0;line-height:0;display:block;"><img src="../img/covers/cover-vernacular-quran.jpg" alt="Book cover: The Vernacular Quran, Oxford University Press, 2012" width="120" height="194" loading="lazy" style="display:block;vertical-align:bottom;"></figure>
+        <figure class="book-cover"><img src="../img/covers/cover-vernacular-quran.jpg" alt="Book cover: The Vernacular Quran, Oxford University Press, 2012" width="120" height="194" loading="lazy" style="display:block;vertical-align:bottom;"></figure>
         <div class="book-info">
           <h2>The Vernacular Qur&#x2019;an</h2>
           <p class="book-sub">
@@ -172,7 +177,7 @@
       </div>
 
       <div class="book-grid">
-        <figure class="book-cover" style="margin:0;padding:0;line-height:0;display:block;"><img src="../img/covers/cover-mapping-frontiers.jpg" alt="Book cover: Mapping Frontiers across Medieval Islam, I.B. Tauris, 2011" width="120" height="184" loading="lazy" style="display:block;vertical-align:bottom;"></figure>
+        <figure class="book-cover"><img src="../img/covers/cover-mapping-frontiers.jpg" alt="Book cover: Mapping Frontiers across Medieval Islam, I.B. Tauris, 2011" width="120" height="184" loading="lazy" style="display:block;vertical-align:bottom;"></figure>
         <div class="book-info">
           <h2>Mapping Frontiers across Medieval Islam</h2>
           <p class="book-sub">
@@ -188,7 +193,7 @@
     </div>
 
     <!-- ── Cloud dinkus ────────────────────────────────── -->
-    <div style="max-width:var(--col); margin:0 auto; padding:40px 48px 8px; text-align:center;">
+    <div class="cloud-dinkus" style="max-width:var(--col); margin:0 auto; padding:40px 48px 8px; text-align:center;">
       <figure class="ms-card">
   <a href="https://viewer.cbl.ie/viewer/image/Per_277_12/1/LOG_0000/" target="_blank" rel="noopener noreferrer" aria-label="Clouds, Book of Kings, Chester Beatty Library, Per. 277 (opens archive in new tab)">
     <img src="../img/clouds-chester-beatty-per277.png"
