@@ -1,0 +1,680 @@
+/* ─────────────────────────────────────────────────────────
+   TRAVIS ZADEH — traviszadeh.com
+   Design system: EB Garamond, warm off-white, single accent
+   ───────────────────────────────────────────────────────── */
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --bg:        #FAFAF8;
+  --text:      #1C1C1C;
+  --muted:     #5A5A5A;
+  --accent:    #8C6A4A;
+  --rule:      #D8D4CE;
+  --col:       680px;
+  --col-wide:  900px;
+  --gap:       8px;
+}
+
+/* ── Reset & base ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+figure { margin: 0; }
+
+html { font-size: 20px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Navigation ──────────────────────────────────────────── */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: transparent;
+  transition: background 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav.scrolled {
+  background: rgba(250, 250, 248, 0.96);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(4px);
+}
+
+.nav-inner {
+  max-width: calc(var(--col-wide) + 96px);
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  font-size: 0.88rem;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.nav-name:hover { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--accent); }
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--text);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* ── Page wrapper ────────────────────────────────────────── */
+.page {
+  padding-top: 56px; /* nav height — overridden to 0 on home page */
+}
+
+/* ── Hero (home only) ────────────────────────────────────── */
+.hero {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  margin-inline: 0;
+  margin-top: 56px; /* nav height */
+}
+
+.hero-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  transform: scale(1.02); /* Zooms slightly to crop out right-edge artifact */
+}
+
+.hero-caption {
+  width: 100%;
+  padding: 10px 48px;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  letter-spacing: 0.01em;
+}
+
+/* ── Main content column ─────────────────────────────────── */
+.col {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.col-wide {
+  max-width: var(--col-wide);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ── Home identity block ─────────────────────────────────── */
+.home-identity {
+  padding: 72px 48px 64px;
+  max-width: var(--col-wide);
+  margin: 0 auto;
+}
+
+.home-identity h1 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.home-identity .title-line {
+  font-size: 0.82rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.home-identity .tagline {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.home-identity .home-award {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* ── Home nav links ──────────────────────────────────────── */
+.home-nav-links {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 48px 48px 80px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.home-nav-links a {
+  font-size: 0.78rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.home-nav-links a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Page header (non-home pages) ───────────────────────── */
+.page-header {
+  padding: 64px 48px 48px;
+  max-width: var(--col);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--rule);
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.page-header .subtitle {
+  font-size: 0.78rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ── Section ─────────────────────────────────────────────── */
+.section {
+  padding: 56px 48px;
+  max-width: var(--col);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section:last-of-type { border-bottom: none; }
+
+.section-label {
+  font-size: 0.7rem;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.section h2 {
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 12px;
+  margin-top: 36px;
+  color: var(--text);
+}
+
+.section p {
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+.section p:last-child { margin-bottom: 0; }
+
+/* ── Portal image (thematic anchor) ─────────────────────── */
+.portal-block {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 48px;
+  align-items: start;
+}
+
+.portal-img-wrap { grid-column: 2; grid-row: 1 / span 3; }
+
+.portal-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule);
+}
+
+/* Floating manuscript figures (background-stripped) */
+.portal-img-wrap.floating img {
+  border: none;
+  mix-blend-mode: multiply;
+}
+
+.portal-img-wrap figcaption {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.portal-text { grid-column: 1; }
+
+/* ── Wide image (maps, architecture) ────────────────────── */
+.wide-img-block {
+  max-width: var(--col-wide);
+  margin: 0 auto 0;
+  padding: 40px 48px;
+}
+
+.wide-img-block img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wide-img-block figcaption {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* ── Typography utilities ────────────────────────────────── */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent); }
+
+/* ── Publication list ────────────────────────────────────── */
+.pub-list {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.pub-list li {
+  font-size: 0.95rem;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.6;
+}
+
+.pub-list li:last-child { border-bottom: none; }
+
+.pub-list .pub-venue {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ── Book entry ──────────────────────────────────────────── */
+.book-entry {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.book-entry:last-child { border-bottom: none; }
+
+.book-entry h2 {
+  font-size: 1.35rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.book-entry .book-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.book-entry p { margin-bottom: 12px; font-size: 0.97rem; }
+
+/* ── Award / endorsement ─────────────────────────────────── */
+.award-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+.award-item strong { display: block; font-weight: 600; }
+.award-item span { color: var(--muted); font-size: 0.85rem; }
+
+.blockquote-pull {
+  margin: 32px 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--rule);
+}
+
+.blockquote-pull p {
+  font-style: italic;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.blockquote-pull cite {
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* ── Course list ─────────────────────────────────────────── */
+.course-list { list-style: none; margin-top: 8px; }
+
+.course-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.course-list li:last-child { border-bottom: none; }
+
+.course-list .course-title { font-weight: 600; }
+
+/* ── Conference entry ────────────────────────────────────── */
+.conf-entry {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+.conf-entry:last-child { border-bottom: none; }
+
+.conf-entry strong { display: block; margin-bottom: 2px; }
+.conf-entry .conf-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 6px;
+}
+.conf-entry p { font-size: 0.92rem; line-height: 1.65; }
+
+/* ── Sortable table ──────────────────────────────────────── */
+.pub-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-top: 16px;
+}
+
+.pub-table th {
+  text-align: left;
+  font-variant: small-caps;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 8px 12px 8px 0;
+  border-bottom: 2px solid var(--rule);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.pub-table th:hover { color: var(--accent); }
+.pub-table th.sorted { color: var(--accent); }
+
+.pub-table td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.pub-table td.year {
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+  width: 52px;
+}
+
+.pub-table td.venue { font-style: italic; color: var(--muted); }
+
+.pub-table .pill {
+  display: inline-block;
+  font-variant: small-caps;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ── Media / podcast entry ───────────────────────────────── */
+.media-entry {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+.media-entry:last-child { border-bottom: none; }
+
+.media-entry strong { display: block; margin-bottom: 2px; }
+
+.media-entry .media-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.media-entry p { font-size: 0.92rem; line-height: 1.65; margin-bottom: 6px; }
+
+/* ── Education list ──────────────────────────────────────── */
+.edu-list { list-style: none; margin-top: 4px; }
+.edu-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+.edu-list li:last-child { border-bottom: none; }
+.edu-list .edu-deg { font-weight: 600; }
+.edu-list .edu-inst { color: var(--muted); font-size: 0.88rem; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 40px 48px;
+  max-width: calc(var(--col-wide) + 96px);
+  margin: 80px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-left { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
+.footer-left a { color: var(--muted); font-size: 0.78rem; }
+.footer-left a:hover { color: var(--accent); }
+.footer-right { font-size: 0.78rem; color: var(--muted); text-align: right; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .nav-links { display: none; flex-direction: column; gap: 0; position: absolute;
+    top: 56px; left: 0; right: 0; background: var(--bg);
+    border-bottom: 1px solid var(--rule); padding: 16px 24px; }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 0.82rem; }
+  .nav-toggle { display: flex; }
+
+  .col, .col-wide, .section, .page-header, .home-identity,
+  .home-nav-links, .wide-img-block, .site-footer { padding-left: 24px; padding-right: 24px; }
+
+  .hero-img { height: 280px; }
+  .hero-caption { padding: 8px 24px; }
+
+  .portal-block { grid-template-columns: 1fr; }
+  .portal-img-wrap { grid-column: 1; grid-row: auto; max-width: 260px; }
+
+  .home-identity h1 { font-size: 1.8rem; }
+  .home-nav-links { gap: 24px; }
+
+  .pub-table td.venue { display: none; }
+  .site-footer { flex-direction: column; }
+  .footer-right { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+
+/* ── Focus styles (keyboard navigation) ─────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 48px;
+  background: var(--accent);
+  color: #FAFAF8;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 0.82rem;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
+  z-index: 999;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s;
+  text-decoration: none;
+  border-bottom: none;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #FAFAF8;
+  outline-offset: -4px;
+}
+
+/* ── Image hover captions (semantic figure system) ──────── */
+.ms-card {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.ms-card img {
+  display: block;
+}
+
+.ms-caption {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(28, 28, 28, 0.88);
+  color: #FAFAF8;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 0.62rem;
+  font-style: italic;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  padding: 6px 10px;
+  width: 260px;
+  text-align: center;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  z-index: 200;
+}
+
+/* Show on hover (desktop) */
+.ms-card:hover .ms-caption {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Show on focus-within (keyboard navigation) */
+.ms-card:focus-within .ms-caption {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Link inside figure — no underline decoration */
+.ms-card a {
+  display: block;
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.ms-card a:hover {
+  border-bottom: none;
+}
+
+/* Ensure figure doesn't break float/grid layouts */
+figure.ms-card {
+  line-height: 0;
+}
+
+/* Remove old classes if any remain */
+.img-caption, .img-caption-link { display: contents; }
