@@ -18,9 +18,27 @@
     nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
+  let autoCloseTimer = null;
+
+  function closeNav() {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }
+
   toggle.addEventListener('click', () => {
     const open = links.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
+
+    // Auto-close after 4 seconds if open
+    clearTimeout(autoCloseTimer);
+    if (open) {
+      autoCloseTimer = setTimeout(closeNav, 4000);
+    }
+  });
+
+  // Cancel timer if user taps a link
+  links.addEventListener('click', () => {
+    clearTimeout(autoCloseTimer);
   });
 
   // Footer year

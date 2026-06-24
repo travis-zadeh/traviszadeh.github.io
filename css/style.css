@@ -560,6 +560,7 @@ a:hover { border-bottom-color: var(--accent); }
     border-bottom: 1px solid var(--rule); padding: 16px 24px; }
   .nav-links.open { display: flex; }
   .nav-links a { display: block; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 0.82rem; }
+  .nav-links li:last-child a { border-bottom: none; }
   .nav-toggle { display: flex; }
   .mobile-home-link { display: block; }
 
