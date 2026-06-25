@@ -8,8 +8,7 @@
   const toggle = document.getElementById('nav-toggle');
   const links  = document.getElementById('nav-links');
 
-  // On the home page the nav starts scrolled (solid background);
-  // on inner pages it becomes solid once the user scrolls past 40px.
+  // On the home page the nav starts scrolled (solid background)
   if (nav.classList.contains('home')) {
     nav.classList.add('scrolled');
   }
@@ -18,6 +17,7 @@
     nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
+  // ── Mobile nav auto-close ──────────────────────────────
   let autoCloseTimer = null;
 
   function closeNav() {
@@ -28,20 +28,60 @@
   toggle.addEventListener('click', () => {
     const open = links.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
-
-    // Auto-close after 4 seconds if open
     clearTimeout(autoCloseTimer);
     if (open) {
       autoCloseTimer = setTimeout(closeNav, 4000);
     }
   });
 
-  // Cancel timer if user taps a link
   links.addEventListener('click', () => {
     clearTimeout(autoCloseTimer);
   });
 
-  // Footer year
+  // ── Mobile image captions ─────────────────────────────
+  // Only activate on touch devices
+  if ('ontouchstart' in window) {
+    const cards = document.querySelectorAll('.ms-card');
+    const CAPTION_DURATION = 3000; // 3 seconds
+
+    cards.forEach(card => {
+      let captionTimer = null;
+
+      // Disable archive links on mobile — tap shows caption only
+      const link = card.querySelector('a');
+      if (link) {
+        link.addEventListener('touchend', (e) => {
+          e.preventDefault(); // block navigation
+        });
+      }
+
+      card.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+
+        // Hide any other open captions
+        cards.forEach(c => {
+          c.classList.remove('caption-visible');
+        });
+
+        // Show this caption
+        card.classList.add('caption-visible');
+
+        // Auto-hide after 3 seconds
+        clearTimeout(captionTimer);
+        captionTimer = setTimeout(() => {
+          card.classList.remove('caption-visible');
+        }, CAPTION_DURATION);
+      }, { passive: true });
+    });
+
+    // Tap anywhere else to dismiss
+    document.addEventListener('touchstart', () => {
+      cards.forEach(c => c.classList.remove('caption-visible'));
+    }, { passive: true });
+  }
+
+  // ── Footer year ───────────────────────────────────────
   const yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
+
 }());

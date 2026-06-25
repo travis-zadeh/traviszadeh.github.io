@@ -702,6 +702,20 @@ button:focus-visible {
   transform: translateX(-50%) translateY(0);
 }
 
+/* On mobile: disable CSS hover/focus triggers — JS handles tap+timer instead */
+@media (max-width: 720px) {
+  .ms-card:hover .ms-caption,
+  .ms-card:focus-within .ms-caption {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  /* Class added by JS to show caption temporarily */
+  .ms-card.caption-visible .ms-caption {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* Link inside figure — no underline decoration */
 .ms-card a {
   display: block;
