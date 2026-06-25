@@ -47,13 +47,17 @@
     cards.forEach(card => {
       let captionTimer = null;
 
-      // Disable archive links on mobile — tap shows caption only
-      const link = card.querySelector('a');
-      if (link) {
+      // Disable ALL archive links inside card on mobile — tap shows caption only
+      const cardLinks = card.querySelectorAll('a');
+      cardLinks.forEach(link => {
         link.addEventListener('touchend', (e) => {
           e.preventDefault(); // block navigation
+          e.stopPropagation();
         });
-      }
+        link.addEventListener('touchstart', (e) => {
+          e.stopPropagation();
+        }, { passive: true });
+      });
 
       card.addEventListener('touchstart', (e) => {
         e.stopPropagation();
