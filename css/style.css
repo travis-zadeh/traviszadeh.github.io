@@ -709,8 +709,10 @@ button:focus-visible {
     opacity: 0;
     transform: translateX(-50%) translateY(4px);
   }
-  /* Class added by JS to show caption temporarily */
-  .ms-card.caption-visible .ms-caption {
+  /* Class added by JS to show caption temporarily —
+     handles both flat and nested figure structures */
+  .ms-card.caption-visible .ms-caption,
+  .ms-card.caption-visible .ms-card .ms-caption {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
