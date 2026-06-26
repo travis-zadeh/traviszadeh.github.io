@@ -35,41 +35,40 @@
   });
 
   links.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    clearTimeout(autoCloseTimer);
-    closeNav();
+    link.addEventListener('click', () => {
+      clearTimeout(autoCloseTimer);
+      closeNav();
+    });
   });
-});
 
   // ── Mobile image captions ─────────────────────────────
   if ('ontouchstart' in window) {
     const cards = document.querySelectorAll('.ms-card');
-    const CAPTION_DURATION = 3000;
+    const CAPTION_DURATION = 3500;
 
-    // Disable archive links on mobile
-    cards.forEach(card => {
-      card.querySelectorAll('a').forEach(link => {
-        link.addEventListener('touchend', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-        });
-      });
-    });
-
-    // Use touchend (not touchstart) for caption toggle
-    // so it doesn't conflict with the document touchstart dismiss
     cards.forEach(card => {
       let captionTimer = null;
 
+      // Disable all links inside cards on mobile — prevent navigation
+      card.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+        });
+        // Also block long-press context menu on links
+        link.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+        });
+      });
+
+      // Show caption on tap
       card.addEventListener('touchend', (e) => {
         e.stopPropagation();
 
         const isVisible = card.classList.contains('caption-visible');
 
-        // Hide all captions
+        // Hide all captions first
         cards.forEach(c => {
           c.classList.remove('caption-visible');
-          // Note: don't clear other cards' timers here — they self-clear
         });
 
         // If this card wasn't already showing, show it
